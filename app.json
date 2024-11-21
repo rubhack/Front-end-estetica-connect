@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "estetica-connect-mobile",
+    "slug": "estetica-connect-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logoconnect.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logoconnect.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FF99AB"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logoconnect.png",
+        "backgroundColor": "#FF99AB"
+      }
+    },
+    "web": {
+      "favicon": "./assets/logoconnect.png"
+    }
+  }
+}
