@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
-import SwipeCards from 'react-native-swipeable-cards';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  ScrollView,
+} from "react-native";
+import SwipeCards from "react-native-swipeable-cards";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-// Dimensiones de la pantalla
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
-// Datos de ejemplo para las tarjetas
 const sampleCards = [
   {
     id: 1,
     name: "Ariana",
     age: 23,
     distance: "Metropolitana, Las Condes",
-    bio: "Estilista con mas años de experiencia",
+    bio: "Estilista con más de 5 años de experiencia en peluquería. Trabajando en el sector profesional con clientes destacados. Me encantaría ayudarte con tu próximo cambio de look.",
+    rating: 4.5,
+    reviews: 120,
     image: "https://d3puay5pkxu9s4.cloudfront.net/curso/4264/800_imagen.jpg",
   },
   {
@@ -21,7 +29,9 @@ const sampleCards = [
     name: "Carlos",
     age: 58,
     distance: "Metropolitana, Santiago",
-    bio: "Especialista en dermatología, más de 20 años en experiencia",
+    bio: "Especialista en dermatología con más de 20 años de experiencia. Tratamientos avanzados de piel y asesorías personalizadas.",
+    rating: 4.8,
+    reviews: 200,
     image: "https://www.clinicalaparva.cl/wp-content/uploads/2019/02/Dr.Vidal650x650.jpg",
   },
   {
@@ -29,54 +39,84 @@ const sampleCards = [
     name: "Lucía",
     age: 30,
     distance: "Metropolitana, Quinta Normal",
-    bio: "Masajista profesional, alivio tendones, musculatura",
+    bio: "Masajista profesional. Experta en alivio de musculatura y tendones. Trabajo con técnicas avanzadas para mejorar tu calidad de vida.",
+    rating: 4.2,
+    reviews: 75,
     image: "https://i.pinimg.com/236x/95/d3/37/95d337684fceb3b738951cf5e6859020.jpg",
   },
 ];
 
 const PatientHomeScreen = ({ navigation }) => {
   const [cards, setCards] = useState(sampleCards);
+  const [expandedCardId, setExpandedCardId] = useState(null);
 
-  // Manejar cuando una tarjeta es deslizada a la derecha (like)
   const handleSwipeRight = (card) => {
     console.log("Liked:", card.name);
+    navigation.navigate("Previsualizacionagendaespe", { specialistData: card });
     removeCard(card);
   };
+  
 
-  // Manejar cuando una tarjeta es deslizada a la izquierda (dislike)
   const handleSwipeLeft = (card) => {
     console.log("Disliked:", card.name);
     removeCard(card);
   };
 
-  // Eliminar tarjeta del estado actual
   const removeCard = (card) => {
     setCards((prevCards) => prevCards.filter((c) => c.id !== card.id));
   };
 
-  // Renderizar cada tarjeta
-  const renderCard = (card) => (
-    <View style={styles.card}>
-      <Image source={{ uri: card.image }} style={styles.cardImage} />
-      <View style={styles.cardContent}>
-        <Text style={styles.cardTitle}>{card.name}, {card.age}</Text>
-        <Text style={styles.cardSubtitle}>{card.distance}</Text>
-        <Text style={styles.cardBio}>{card.bio}</Text>
+  const refreshScreen = () => {
+    navigation.navigate("PatientHomeScreen");
+  };
+
+  const renderCard = (card) => {
+    const isExpanded = expandedCardId === card.id;
+    const bio = isExpanded ? card.bio : `${card.bio.substring(0, 100)}...`;
+
+    return (
+      <View style={[styles.card, { width: width * 0.85, height: height * 0.65 }]}>
+        <Image source={{ uri: card.image }} style={styles.cardImage} />
+        <View style={styles.cardContent}>
+          <Text style={styles.cardTitle}>{card.name}, {card.age}</Text>
+          <Text style={styles.cardSubtitle}>{card.distance}</Text>
+          <ScrollView style={styles.bioContainer}>
+            <Text style={styles.cardBio}>{bio}</Text>
+            {!isExpanded && card.bio.length > 100 && (
+              <TouchableOpacity onPress={() => setExpandedCardId(card.id)}>
+                <Text style={styles.readMore}>Leer más</Text>
+              </TouchableOpacity>
+            )}
+            {isExpanded && (
+              <TouchableOpacity onPress={() => setExpandedCardId(null)}>
+                <Text style={styles.readMore}>Leer menos</Text>
+              </TouchableOpacity>
+            )}
+          </ScrollView>
+          <View style={styles.ratingContainer}>
+            <Ionicons name="star" size={16} color="#FFD700" />
+            <Text style={styles.ratingText}>{card.rating}</Text>
+            <Text style={styles.reviewsText}>({card.reviews} reseñas)</Text>
+          </View>
+        </View>
       </View>
-    </View>
-  );
+    );
+  };
+
+  const currentCard = cards[0];
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Ionicons name="notifications-outline" size={24} color="#FF497C" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Descubre Especialistas</Text>
-        <TouchableOpacity>
-          <Ionicons name="options-outline" size={24} color="#FF497C" />
-        </TouchableOpacity>
-      </View>
+  <View style={styles.header}>
+  <TouchableOpacity onPress={() => navigation.navigate("Notificationpatient")}>
+  <Ionicons name="notifications-outline" size={24} color="#FF497C" />
+  </TouchableOpacity>
+  <Text style={styles.title}>Descubre Especialistas</Text>
+  <TouchableOpacity onPress={() => navigation.navigate("settingpatient")}>
+    <Ionicons name="settings-outline" size={24} color="#FF497C" />
+  </TouchableOpacity>
+</View>
+
       <SwipeCards
         cards={cards}
         renderCard={renderCard}
@@ -86,14 +126,33 @@ const PatientHomeScreen = ({ navigation }) => {
         stack={true}
         stackDepth={3}
       />
+      {cards.length === 0 && (
+        <Text style={styles.noMoreCards}>¡No hay más tarjetas para mostrar!</Text>
+      )}
+      {currentCard && (
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.dislikeButton}
+            onPress={() => handleSwipeLeft(currentCard)}
+          >
+            <Ionicons name="close" size={30} color="#FFF" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.likeButton}
+            onPress={() => handleSwipeRight(currentCard)}
+          >
+            <Ionicons name="eye" size={30} color="#FFF" />
+          </TouchableOpacity>
+        </View>
+      )}
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={refreshScreen}>
           <Ionicons name="home-outline" size={28} color="#FFF" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity onPress={() => navigation.navigate("PatientProfileScreen")}>
           <Ionicons name="person-outline" size={28} color="#FFF" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
+        <TouchableOpacity onPress={() => navigation.navigate("Historialcita")}>
           <Ionicons name="calendar-outline" size={28} color="#FFF" />
         </TouchableOpacity>
       </View>
@@ -110,26 +169,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical: 10,
-    marginTop: 50, // Ajustado para bajar más el header
     backgroundColor: "#FFF",
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "#333",
+    paddingTop: 50,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 20,
-    color: "#333",
+    color: "#FF497C",
   },
   card: {
-    width: width * 0.85,
-    height: height * 0.65,
     borderRadius: 20,
     backgroundColor: "#FFF",
     elevation: 5,
@@ -138,10 +188,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowRadius: 5,
     alignSelf: "center",
+    marginVertical: 10,
   },
   cardImage: {
     width: "100%",
-    height: "70%",
+    height: "60%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -159,10 +210,58 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginVertical: 5,
   },
+  bioContainer: {
+    maxHeight: "40%",
+  },
   cardBio: {
     fontSize: 16,
     color: "#555",
     textAlign: "center",
+  },
+  readMore: {
+    fontSize: 14,
+    color: "#FF497C",
+    textAlign: "center",
+    marginTop: 5,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 15,
+  },
+  ratingText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 5,
+    color: "#333",
+  },
+  reviewsText: {
+    fontSize: 14,
+    color: "#777",
+    marginLeft: 5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: -30,
+    marginBottom: 40,
+  },
+  dislikeButton: {
+    backgroundColor: "#B22222",
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  likeButton: {
+    backgroundColor: "#228B22",
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
   navBar: {
     flexDirection: "row",
@@ -172,11 +271,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF497C",
     borderRadius: 30,
     marginHorizontal: 10,
-    marginBottom: 20,
-    position: "absolute",
-    bottom: 10,
-    width: "95%",
-    alignSelf: "center",
+    marginBottom: 10,
   },
   noMoreCards: {
     fontSize: 18,
@@ -187,4 +282,3 @@ const styles = StyleSheet.create({
 });
 
 export default PatientHomeScreen;
-

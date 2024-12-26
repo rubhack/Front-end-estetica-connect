@@ -33,7 +33,7 @@ export default function PatientLoginScreen({ navigation }) {
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity 
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate('Roleselectionscreen')}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             style={styles.backButton}
           >
