@@ -32,7 +32,7 @@ export default function ProveedorLogScreen({ navigation }) {
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity 
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate('Roleselectionscreen')}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             style={styles.backButton}
           >
@@ -97,20 +97,6 @@ export default function ProveedorLogScreen({ navigation }) {
           <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
             <Text style={styles.loginButtonText}>Iniciar Sesion</Text>
           </TouchableOpacity>
-
-          {/* Social Login */}
-          <View style={styles.socialContainer}>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-google" size={24} color="#000" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-apple" size={24} color="#000" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-facebook" size={24} color="#000" />
-            </TouchableOpacity>
-          </View>
-
              {/* Sign Up Link */}
              <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>¿No tienes cuenta? </Text>

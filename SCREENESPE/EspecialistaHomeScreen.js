@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-// Datos de ejemplo para pacientes
+// Datos de ejemplo para pacientes, ahora con hora agendada
 const samplePatients = [
   {
     id: 1,
@@ -17,6 +17,7 @@ const samplePatients = [
     age: 29,
     condition: "Dolor muscular crónico",
     image: "https://d3puay5pkxu9s4.cloudfront.net/curso/4264/800_imagen.jpg",
+    time: "10:30 AM", // Hora agendada
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const samplePatients = [
     age: 41,
     condition: "Rehabilitación postquirúrgica",
     image: "https://www.clinicalaparva.cl/wp-content/uploads/2019/02/Dr.Vidal650x650.jpg",
+    time: "1:00 PM", // Hora agendada
   },
   {
     id: 3,
@@ -31,8 +33,10 @@ const samplePatients = [
     age: 35,
     condition: "Tratamiento facial",
     image: "https://i.pinimg.com/236x/95/d3/37/95d337684fceb3b738951cf5e6859020.jpg",
+    time: "3:15 PM", // Hora agendada
   },
 ];
+
 
 // Generar automáticamente las fechas de la semana
 const getWeekDates = () => {
@@ -70,13 +74,17 @@ const EspecialistaHomeScreen = ({ navigation }) => {
           <Text style={styles.userName}>Dr. John Doe</Text>
         </View>
         <View style={styles.headerIcons}>
+        <TouchableOpacity onPress={() => navigation.navigate("notificacionespe")}>
           <Ionicons name="notifications-outline" size={24} color="#FFF" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ajusteespecialista")}>
           <Ionicons
             name="settings-outline"
             size={24}
             color="#FFF"
             style={{ marginLeft: 15 }}
           />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -110,34 +118,43 @@ const EspecialistaHomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         ))}
       </View>
-
-      {/* Lista de pacientes */}
+      
       <FlatList
-        data={samplePatients}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.patientCard}>
-            <Image source={{ uri: item.image }} style={styles.patientImage} />
-            <View style={styles.patientInfo}>
-              <Text style={styles.patientName}>
-                {item.name}, {item.age}
-              </Text>
-              <Text style={styles.patientCondition}>{item.condition}</Text>
-            </View>
-          </View>
-        )}
-        style={styles.patientList}
-      />
+  data={samplePatients}
+  keyExtractor={(item) => item.id.toString()}
+  renderItem={({ item }) => (
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("Citaforpacien", {
+          patientData: item, // Pasar datos del paciente a la nueva pantalla
+        })
+      }
+    >
+      <View style={styles.patientCard}>
+        <Image source={{ uri: item.image }} style={styles.patientImage} />
+        <View style={styles.patientInfo}>
+          <Text style={styles.patientName}>
+            {item.name}, {item.age}
+          </Text>
+          <Text style={styles.patientCondition}>{item.condition}</Text>
+        </View>
+        <Text style={styles.appointmentTime}>{item.time}</Text>
+      </View>
+    </TouchableOpacity>
+  )}
+  style={styles.patientList}
+/>
+
 
       {/* Footer */}
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity onPress={() => navigation.navigate("EspecialistaHomeScreen")}>
           <Ionicons name="home-outline" size={28} color="#FFF" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Stats")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Estadisticaespe")}>
           <Ionicons name="stats-chart-outline" size={28} color="#FFF" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Calendarespe")}>
           <Ionicons name="calendar-outline" size={28} color="#FFF" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Proveedor")}>
@@ -222,6 +239,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderRadius: 10,
     elevation: 2,
+    alignItems: "center",
   },
   patientImage: {
     width: 50,
@@ -229,6 +247,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   patientInfo: {
+    flex: 1,
     marginLeft: 10,
   },
   patientName: {
@@ -239,6 +258,11 @@ const styles = StyleSheet.create({
   patientCondition: {
     fontSize: 14,
     color: "#666",
+  },
+  appointmentTime: {
+    fontSize: 14,
+    color: "#FF497C",
+    fontWeight: "bold",
   },
   navBar: {
     flexDirection: "row",

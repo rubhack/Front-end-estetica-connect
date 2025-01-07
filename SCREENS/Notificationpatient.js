@@ -57,7 +57,7 @@ const sampleNotifications = [
   },
 ];
 
-const NotificationPatientScreen = ({ navigation }) => {
+const Notificationpatient = ({ navigation }) => {
   const [notifications, setNotifications] = useState(sampleNotifications);
 
   // Función para marcar todas las notificaciones como leídas
@@ -215,4 +215,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NotificationPatientScreen;
+export default Notificationpatient;

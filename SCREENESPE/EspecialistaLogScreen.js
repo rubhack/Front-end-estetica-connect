@@ -22,7 +22,7 @@ export default function EspecialistaLogScreen({ navigation }) {
     if (email === 'rubendejes@gmail.com' && password === '123456') {
       navigation.navigate('EspecialistaHomeScreen'); // Navegar a Home si las credenciales son correctas
     } else {
-      ('Credenciales incorrectas. Intenta nuevamente.');
+      alert('Credenciales incorrectas. Intenta nuevamente.');
     }
   };
 
@@ -31,8 +31,8 @@ export default function EspecialistaLogScreen({ navigation }) {
       <View style={styles.safeArea}>
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity 
-            onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Roleselectionscreen')}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             style={styles.backButton}
           >
@@ -44,8 +44,8 @@ export default function EspecialistaLogScreen({ navigation }) {
         <View style={styles.content}>
           {/* Patient Image */}
           <View style={styles.imageContainer}>
-            <Image 
-              source={require('../assets/especialista.png')} 
+            <Image
+              source={require('../assets/especialista.png')}
               style={styles.patientImage}
               resizeMode="contain"
             />
@@ -76,13 +76,13 @@ export default function EspecialistaLogScreen({ navigation }) {
               onChangeText={setPassword}
               secureTextEntry={!showPassword}
             />
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.eyeIcon}
               onPress={() => setShowPassword(!showPassword)}
             >
-              <Ionicons 
-                name={showPassword ? "eye-off" : "eye"} 
-                size={24} 
+              <Ionicons
+                name={showPassword ? 'eye-off' : 'eye'}
+                size={24}
                 color="#999"
               />
             </TouchableOpacity>
@@ -90,26 +90,13 @@ export default function EspecialistaLogScreen({ navigation }) {
 
           {/* Forgot Password */}
           <TouchableOpacity style={styles.forgotPassword}>
-            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
           </TouchableOpacity>
 
           {/* Login Button */}
           <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-            <Text style={styles.loginButtonText}>Iniciar Sesion</Text>
+            <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
           </TouchableOpacity>
-
-          {/* Social Login */}
-          <View style={styles.socialContainer}>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-google" size={24} color="#000" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-apple" size={24} color="#000" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Ionicons name="logo-facebook" size={24} color="#000" />
-            </TouchableOpacity>
-          </View>
 
           {/* Sign Up Link */}
           <View style={styles.signUpContainer}>
@@ -136,10 +123,11 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 8,
-    height: 60,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
+    backgroundColor: '#fff',
   },
   backButton: {
     padding: 8,
@@ -205,22 +193,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  socialContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 24,
-    marginTop: 12,
-  },
-  socialButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginHorizontal: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   signUpContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -234,3 +206,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+

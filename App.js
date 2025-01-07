@@ -4,10 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Roleselectionscreen from './SCREENS/Roleselectionscreen';
 import PatientLoginScreen from './SCREENS/PatientLoginScreen';
-import EspecialistaLogScreen from './SCREENS/EspecialistaLogScreen';
+import EspecialistaLogScreen from './SCREENESPE/EspecialistaLogScreen';
 import ProveedorLogScreen from './SCREENS/ProveedorLogScreen';
 import PatientRegisterScreen from './SCREENS/PatientRegisterScreen';
-import EspecialistaRegisterScreen from './SCREENS/EspecialistaRegisterScreen';
+import EspecialistaRegisterScreen from './SCREENESPE/EspecialistaRegisterScreen';
 import ProveedorRegisterScreen from './SCREENS/ProveedorRegisterScreen';
 import PatientHomeScreen from './SCREENS/PatientHomeScreen';
 import settingpatient from './SCREENS/settingpatient';
@@ -21,8 +21,28 @@ import Detallecita from './SCREENS/Detallecita';
 import Historialcita from './SCREENS/Historialcita';
 import Cancelarcita from './SCREENS/Cancelarcita';
 import Citacompletada from './SCREENS/Citacompletada';
-import EspecialistaHomeScreen from './SCREENS/EspecialistaHomeScreen';
+import EspecialistaHomeScreen from './SCREENESPE/EspecialistaHomeScreen';
+import ajusteespecialista from './SCREENESPE/ajusteespecialista';
+import updateperfilespe from './SCREENESPE/updateperfilespe';
+import settingespe from './SCREENESPE/settingespe';
+import notificacionespe from './SCREENESPE/notificacionespe';
+import Citaforpacien from './SCREENESPE/Citaforpacien';
+import Calendarespe from './SCREENESPE/Calendarespe';
+import ModificarAgenda from './SCREENESPE/ModificarAgenda';
+import CitaDelDia from './SCREENESPE/CitaDelDia';
+import AgendarCitaEspe from './SCREENESPE/AgendarCitaEspe';
+import ComprobanteEspe from './SCREENESPE/ComprobanteEspe';
+import Proveedor from './SCREENESPE/Proveedor';
+import Compraespe from './SCREENESPE/Compraespe';
+import Historial from './SCREENESPE/Historial';
+import InfoCompany from './SCREENESPE/InfoCompany';
+import MasDetalle from './SCREENESPE/MasDetalle';
+import CarritoDeCompra from './SCREENESPE/CarritoDeCompra';
+import DetallesDeCompra from './SCREENESPE/DetallesDeCompra';
+import FormularioSatisfaccion from './SCREENESPE/FormularioSatisfaccion';
+import Estadisticaespe from './SCREENESPE/Estadisticaespe';
 import ProveedorHomeScreen from './SCREENS/ProveedorHomeScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -117,6 +137,82 @@ export default function App() {
           <Stack.Screen 
           name="EspecialistaHomeScreen" 
           component={EspecialistaHomeScreen} 
+        />
+          <Stack.Screen 
+          name="ajusteespecialista" 
+          component={ajusteespecialista} 
+        />
+          <Stack.Screen 
+          name="updateperfilespe" 
+          component={updateperfilespe} 
+        />
+         <Stack.Screen 
+          name="settingespe" 
+          component={settingespe} 
+        />
+         <Stack.Screen 
+          name="notificacionespe" 
+          component={notificacionespe} 
+        />
+          <Stack.Screen 
+          name="Citaforpacien" 
+          component={Citaforpacien} 
+        />
+          <Stack.Screen 
+          name="Calendarespe" 
+          component={Calendarespe} 
+        />
+         <Stack.Screen 
+          name="ModificarAgenda" 
+          component={ModificarAgenda} 
+        />
+        <Stack.Screen 
+          name="CitaDelDia" 
+          component={CitaDelDia} 
+        />
+         <Stack.Screen 
+          name="AgendarCitaEspe" 
+          component={AgendarCitaEspe} 
+        />
+         <Stack.Screen 
+          name="ComprobanteEspe" 
+          component={ComprobanteEspe} 
+        />
+        <Stack.Screen 
+          name="Proveedor" 
+          component={Proveedor} 
+        />
+        <Stack.Screen 
+          name="Compraespe" 
+          component={Compraespe} 
+        />
+        <Stack.Screen 
+          name="Historial" 
+          component={Historial} 
+        />
+        <Stack.Screen 
+          name="InfoCompany" 
+          component={InfoCompany} 
+        />
+         <Stack.Screen 
+          name="MasDetalle" 
+          component={MasDetalle} 
+        />
+         <Stack.Screen 
+          name="CarritoDeCompra" 
+          component={CarritoDeCompra} 
+        />
+         <Stack.Screen 
+          name="DetallesDeCompra" 
+          component={DetallesDeCompra} 
+        />
+          <Stack.Screen 
+          name="FormularioSatisfaccion" 
+          component={FormularioSatisfaccion} 
+        />
+         <Stack.Screen 
+          name="Estadisticaespe" 
+          component={Estadisticaespe} 
         />
           <Stack.Screen 
           name="ProveedorHomeScreen" 
