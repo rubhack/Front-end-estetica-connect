@@ -23,28 +23,28 @@ const sampleInventory = [
     name: "Crema Anti-edad",
     price: 15000,
     quantity: 20,
-    image: "https://aldiaargentina.microjuris.com/wp-content/uploads/2013/12/remedios.jpg",
+    image: "https://deutschepharma.cl/wp-content/uploads/2023/06/crema-hidratante_para_cuerpo_pierl_normal_ureacer-min.jpg",
   },
   {
     id: "B456",
     name: "Mascarilla Facial",
     price: 8000,
     quantity: 9,
-    image: "https://res.cloudinary.com/wpchile/image/upload/f_auto,q_auto,w_200/easyfarma/woo_product/26662/100000.jpg",
+    image: "https://cyzone.cyzone.com/wp-content/uploads/2020/10/Grafica2-Tips-Mascarilla-de-tela.jpg",
   },
   {
     id: "C789",
     name: "Serum Facial",
     price: 12000,
     quantity: 5,
-    image: "https://www.cofatuc.org.ar/sec_nov/deco_enfermedades_cronicas_medicamentos_truchos.jpg",
+    image: "https://trends.lbel.com/cl/wp-content/uploads/sites/4/2024/06/MicrosoftTeams-image-23_1787402_3051980.png",
   },
   {
     id: "D101",
     name: "Aceite Corporal",
     price: 10000,
     quantity: 30,
-    image: "https://www.farmaciamoreo.com/2960-home_default/angileptol-30-comprimidos-para-chupar-sabor-miel-limon.jpg",
+    image: "https://dbs.cl/media/catalog/product/o/r/organic-osh-14255-1.jpg?optimize=low&bg-color=255,255,255&fit=bounds&height=&width=",
   },
 ];
 

@@ -28,7 +28,7 @@ const updateperfilespe = ({ navigation }) => {
   const [interests, setInterests] = useState("Lorem ipsum dolor sit amet.");
   const [isEditing, setIsEditing] = useState(false);
   const [profileImage, setProfileImage] = useState(
-    "https://via.placeholder.com/100"
+    "https://i.pravatar.cc/100"
   );
   const [certificate, setCertificate] = useState({
     uri: null,

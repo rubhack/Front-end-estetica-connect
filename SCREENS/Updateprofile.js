@@ -16,7 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const UpdateProfile = ({ navigation }) => {
-  const [fullName, setFullName] = useState("John Doe");
+  const [fullName, setFullName] = useState("Carlos Perez");
   const [rut, setRut] = useState("12345678-9");
   const [email, setEmail] = useState("johndoe@example.com");
   const [phone, setPhone] = useState("+1235678900");
@@ -26,7 +26,7 @@ const UpdateProfile = ({ navigation }) => {
   const [address, setAddress] = useState("123 Main St, City");
   const [interests, setInterests] = useState("Lorem ipsum dolor sit amet.");
   const [isEditing, setIsEditing] = useState(false);
-  const [profileImage, setProfileImage] = useState("https://via.placeholder.com/100");
+  const [profileImage, setProfileImage] = useState("https://miro.medium.com/v2/resize:fit:1224/1*XKpA4-JcY06QcMOiPB1zaQ.jpeg");
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || birthDate;

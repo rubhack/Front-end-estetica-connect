@@ -16,7 +16,7 @@ const samplePatients = [
     name: "Ana López",
     age: 29,
     condition: "Dolor muscular crónico",
-    image: "https://d3puay5pkxu9s4.cloudfront.net/curso/4264/800_imagen.jpg",
+    image: "https://centrointegraldepsicologia.com/wp-content/uploads/2023/06/El-Sindrome-de-la-Buena-Persona-Los-Limites-Olvidados-1024x576.png",
     time: "10:30 AM", // Hora agendada
   },
   {
@@ -24,7 +24,7 @@ const samplePatients = [
     name: "Carlos Pérez",
     age: 41,
     condition: "Rehabilitación postquirúrgica",
-    image: "https://www.clinicalaparva.cl/wp-content/uploads/2019/02/Dr.Vidal650x650.jpg",
+    image: "https://miro.medium.com/v2/resize:fit:1224/1*XKpA4-JcY06QcMOiPB1zaQ.jpeg",
     time: "1:00 PM", // Hora agendada
   },
   {
@@ -32,7 +32,7 @@ const samplePatients = [
     name: "María González",
     age: 35,
     condition: "Tratamiento facial",
-    image: "https://i.pinimg.com/236x/95/d3/37/95d337684fceb3b738951cf5e6859020.jpg",
+    image: "https://images.ecestaticos.com/-f-ySwBW7Mp-ggDplxXveJ0bCNQ=/0x0:991x445/992x446/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F743%2F930%2F270%2F743930270aabd407a594e0f8b8d5dbe9.jpg",
     time: "3:15 PM", // Hora agendada
   },
 ];

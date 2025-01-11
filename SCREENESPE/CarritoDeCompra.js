@@ -26,7 +26,7 @@ const CarritoDeCompra = ({ navigation }) => {
       name: "Mascarilla Facial",
       price: 8000,
       quantity: 2,
-      image: "https://via.placeholder.com/150",
+      image: "https://cyzone.cyzone.com/wp-content/uploads/2020/10/Grafica2-Tips-Mascarilla-de-tela.jpg",
     },
   ]);
 

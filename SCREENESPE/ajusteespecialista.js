@@ -32,7 +32,7 @@ const ajusteespecialista = ({ navigation }) => {
       <View style={styles.profileContainer}>
         <Image
           source={{
-            uri: "https://www.clinicalaparva.cl/wp-content/uploads/2019/02/Dr.Vidal650x650.jpg",
+            uri: "https://i.pravatar.cc/100",
           }}
           style={styles.profileImage}
         />

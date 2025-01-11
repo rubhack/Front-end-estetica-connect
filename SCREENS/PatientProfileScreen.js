@@ -32,11 +32,11 @@ const PatientProfileScreen = ({ navigation }) => {
       <View style={styles.profileContainer}>
         <Image
           source={{
-            uri: "https://www.clinicalaparva.cl/wp-content/uploads/2019/02/Dr.Vidal650x650.jpg",
+            uri: "https://miro.medium.com/v2/resize:fit:1224/1*XKpA4-JcY06QcMOiPB1zaQ.jpeg",
           }}
           style={styles.profileImage}
         />
-        <Text style={styles.userName}>John Doe</Text>
+        <Text style={styles.userName}>Carlos Perez</Text>
       </View>
 
       {/* Opciones */}
