@@ -10,7 +10,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 const { width } = Dimensions.get("window");
 
-const settingespe = ({ navigation }) => {
+const settingprove = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default settingespe;
+export default settingprove;

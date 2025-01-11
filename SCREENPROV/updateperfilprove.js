@@ -12,34 +12,26 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Picker } from "@react-native-picker/picker";
-import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from 'expo-image-picker';
-import DateTimePicker from "@react-native-community/datetimepicker";
+import * as DocumentPicker from "expo-document-picker";
 
-const updateperfilespe = ({ navigation }) => {
-  const [fullName, setFullName] = useState("John Doe");
+
+const updateperfilprove = ({ navigation }) => {
+  const [fullName, setFullName] = useState("Wayne Industries");
   const [rut, setRut] = useState("12345678-9");
   const [email, setEmail] = useState("johndoe@example.com");
   const [phone, setPhone] = useState("+1235678900");
-  const [birthDate, setBirthDate] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [sex, setSex] = useState("Masculino");
+  const [Category, setCategory] = useState("Dermatologia");
   const [address, setAddress] = useState("123 Main St, City");
-  const [interests, setInterests] = useState("Lorem ipsum dolor sit amet.");
   const [isEditing, setIsEditing] = useState(false);
   const [profileImage, setProfileImage] = useState(
     "https://via.placeholder.com/100"
   );
   const [certificate, setCertificate] = useState({
     uri: null,
-    name: "certificado.pdf", // Nombre inicial
+    name: "certificadoSII.pdf", // Nombre inicial
   });
 
-  const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || birthDate;
-    setShowDatePicker(false);
-    setBirthDate(currentDate);
-  };
   const handleImagePicker = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -88,16 +80,16 @@ const updateperfilespe = ({ navigation }) => {
         <View style={{ width: 28 }} />
       </View>
 
-       <ScrollView contentContainerStyle={styles.content}>
-         <View style={styles.profilePictureContainer}>
-           <Image source={{ uri: profileImage }} style={styles.profilePicture} />
-           <TouchableOpacity
-             style={[styles.cameraIcon, isEditing && { backgroundColor: "#FFA07A" }]}
-             onPress={isEditing ? handleImagePicker : null}
-           >
-             <Ionicons name="camera" size={20} color="#FFF" />
-           </TouchableOpacity>
-         </View>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.profilePictureContainer}>
+          <Image source={{ uri: profileImage }} style={styles.profilePicture} />
+          <TouchableOpacity
+            style={[styles.cameraIcon, isEditing && { backgroundColor: "#FFA07A" }]}
+            onPress={isEditing ? handleImagePicker : null}
+          >
+            <Ionicons name="camera" size={20} color="#FFF" />
+          </TouchableOpacity>
+        </View>
 
         <TextInput
           style={[styles.input, isEditing && styles.editableInput]}
@@ -117,33 +109,16 @@ const updateperfilespe = ({ navigation }) => {
 
         <View style={styles.pickerContainer}>
           <Picker
-            selectedValue={sex}
-            onValueChange={(itemValue) => setSex(itemValue)}
+            selectedValue={Category}
+            onValueChange={(itemValue) => setCategory(itemValue)}
             enabled={isEditing}
           >
-            <Picker.Item label="Masculino" value="Masculino" />
-            <Picker.Item label="Femenino" value="Femenino" />
+            <Picker.Item label="Dermatologia" value="Dermatologia" />
+            <Picker.Item label="uñas" value="uñas" />
+            <Picker.Item label="Masajes" value="Masajes" />
+            <Picker.Item label="Pedicure" value="Pedicure" />
           </Picker>
         </View>
-
-        <TouchableOpacity
-          style={styles.datePickerButton}
-          onPress={() => setShowDatePicker(true)}
-          disabled={!isEditing}
-        >
-          <Text style={styles.datePickerText}>
-            {birthDate.toLocaleDateString("es-ES")}
-          </Text>
-        </TouchableOpacity>
-
-        {showDatePicker && (
-          <DateTimePicker
-            value={birthDate}
-            mode="date"
-            display="default"
-            onChange={handleDateChange}
-          />
-        )}
 
         <TextInput
           style={[styles.input, isEditing && styles.editableInput]}
@@ -169,15 +144,6 @@ const updateperfilespe = ({ navigation }) => {
           onChangeText={setAddress}
           editable={isEditing}
           placeholder="Dirección"
-        />
-
-        <TextInput
-          style={[styles.input, styles.largeInput, isEditing && styles.editableInput]}
-          value={interests}
-          onChangeText={setInterests}
-          editable={isEditing}
-          placeholder="Intereses"
-          multiline
         />
 
         {/* Adjuntar certificado */}
@@ -266,17 +232,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 15,
       },
-      datePickerButton: {
-        backgroundColor: "#F5F5F5",
-        borderRadius: 10,
-        padding: 15,
-        alignItems: "center",
-        marginBottom: 15,
-      },
-      datePickerText: {
-        fontSize: 16,
-        color: "#333",
-      },
       largeInput: {
         minHeight: 100,
         textAlignVertical: "top",
@@ -317,4 +272,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default updateperfilespe;
+export default updateperfilprove;

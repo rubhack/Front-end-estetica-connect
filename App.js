@@ -5,10 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Roleselectionscreen from './SCREENS/Roleselectionscreen';
 import PatientLoginScreen from './SCREENS/PatientLoginScreen';
 import EspecialistaLogScreen from './SCREENESPE/EspecialistaLogScreen';
-import ProveedorLogScreen from './SCREENS/ProveedorLogScreen';
+import ProveedorLogScreen from './SCREENPROV/ProveedorLogScreen';
 import PatientRegisterScreen from './SCREENS/PatientRegisterScreen';
 import EspecialistaRegisterScreen from './SCREENESPE/EspecialistaRegisterScreen';
-import ProveedorRegisterScreen from './SCREENS/ProveedorRegisterScreen';
+import ProveedorRegisterScreen from './SCREENPROV/ProveedorRegisterScreen';
 import PatientHomeScreen from './SCREENS/PatientHomeScreen';
 import settingpatient from './SCREENS/settingpatient';
 import Notificationpatient from './SCREENS/Notificationpatient';
@@ -41,7 +41,20 @@ import CarritoDeCompra from './SCREENESPE/CarritoDeCompra';
 import DetallesDeCompra from './SCREENESPE/DetallesDeCompra';
 import FormularioSatisfaccion from './SCREENESPE/FormularioSatisfaccion';
 import Estadisticaespe from './SCREENESPE/Estadisticaespe';
-import ProveedorHomeScreen from './SCREENS/ProveedorHomeScreen';
+import ProveedorHomeScreen from './SCREENPROV/ProveedorHomeScreen';
+import ajustesprove from './SCREENPROV/ajustesprove';
+import settingprove from './SCREENPROV/settingprove';
+import updateperfilprove from './SCREENPROV/updateperfilprove';
+import AgendarPedido from './SCREENPROV/AgendarPedido';
+import Pedidos from './SCREENPROV/Pedidos';
+import DetallePendiente from './SCREENPROV/DetallePendiente';
+import Entregado from './SCREENPROV/Entregado';
+import NoEntregado from './SCREENPROV/NoEntregado';
+import AddProduct from './SCREENPROV/AddProduct';
+import Inventory from './SCREENPROV/Inventory';
+import EditProduct from './SCREENPROV/EditProduct';
+import NotificacionProve from './SCREENPROV/NotificacionProve';
+import EstadisticaProve from './SCREENPROV/EstadisticaProve';
 
 const Stack = createNativeStackNavigator();
 
@@ -217,6 +230,58 @@ export default function App() {
           <Stack.Screen 
           name="ProveedorHomeScreen" 
           component={ProveedorHomeScreen} // Pantalla de registro del proveedor
+        />
+         <Stack.Screen 
+          name="ajustesprove" 
+          component={ajustesprove} 
+        />
+        <Stack.Screen 
+          name="settingprove" 
+          component={settingprove} 
+        />
+          <Stack.Screen 
+          name="updateperfilprove" 
+          component={updateperfilprove} 
+        />
+        <Stack.Screen 
+          name="AgendarPedido" 
+          component={AgendarPedido} 
+        />
+        <Stack.Screen 
+          name="Pedidos" 
+          component={Pedidos} 
+        />
+         <Stack.Screen 
+          name="DetallePendiente" 
+          component={DetallePendiente} 
+        />
+          <Stack.Screen 
+          name="Entregado" 
+          component={Entregado} 
+        />
+        <Stack.Screen 
+          name="NoEntregado" 
+          component={NoEntregado} 
+        />
+         <Stack.Screen 
+          name="AddProduct" 
+          component={AddProduct} 
+        />
+         <Stack.Screen 
+          name="Inventory" 
+          component={Inventory} 
+        />
+         <Stack.Screen 
+          name="EditProduct" 
+          component={EditProduct} 
+        />
+        <Stack.Screen 
+          name="NotificacionProve" 
+          component={NotificacionProve} 
+        />
+         <Stack.Screen 
+          name="EstadisticaProve" 
+          component={EstadisticaProve} 
         />
       </Stack.Navigator>
     </NavigationContainer>
